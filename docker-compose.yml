@@ -1,10 +1,10 @@
 services:
   oracle21E:
     image: container-registry.oracle.com/database/express:21.3.0-xe
-    container_name: oracle21XE
+    container_name: oracle21XE # Modifica este nombre  y hostname si tienes otros contenedores de oracle
     hostname: oracle21xe
     ports:
-      - "1524:1521"
+      - "1524:1521" # Modifica 1524 y 5504 si tienes otros servicios en esos puertos
       - "5504:5500"
     environment:
       - ORACLE_PWD=OraclePass123
