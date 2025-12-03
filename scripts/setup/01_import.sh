@@ -5,7 +5,7 @@ echo "Esperando a que la base de datos esté lista..."
 sleep 30
 
 DUMP_FILE="/opt/oracle/dumps/dump.dmp"
-
+## Comprueba que está el archivo dump antes de intentar importarlo
 if [ ! -f "$DUMP_FILE" ]; then
     echo "ADVERTENCIA: No se encuentra el archivo $DUMP_FILE"
     exit 0
@@ -17,7 +17,7 @@ export ORACLE_SID=XE
 export ORACLE_HOME=/opt/oracle/product/21c/dbhomeXE
 export PATH=$ORACLE_HOME/bin:$PATH
 
-#
+#Me conecto a mi pdb y creo el directorio de oracle para data pump
 sqlplus -s sys/${ORACLE_PWD}@//localhost:1521/XEPDB1 as sysdba <<EOF
 SET SERVEROUTPUT ON
 WHENEVER SQLERROR EXIT SQL.SQLCODE
@@ -29,7 +29,9 @@ EXIT;
 EOF
 
 echo "Directorio de Data Pump configurado"
-
+# Comienza el proceso de importación. Se pueden ignorar fallos derivados de roles o usuarios inexistentes a los que
+# se les intenta otorgar permisos. También puede dar fallos en vistas o PL/SQL que hagan referencia a objetos que no existen,
+# sobre todo si son de otros esquemas que no se han importado.
 # Usar ${ORACLE_PWD} también aquí
 echo "Importando dump con remap de tablespaces..."
 ## En remap tablespaces
