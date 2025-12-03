@@ -1,0 +1,24 @@
+# Datos de Oracle-
+oracle-data/
+
+# Dumps 
+dumps/*.dmp
+dumps/*.log
+
+# Logs de importación
+*.log
+
+# Backups
+*.tar.gz
+*.zip
+backup/
+
+# Archivos temporales
+*.tmp
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Credenciales (si las tienes en archivos separados)
+*.env
+credentials.txt

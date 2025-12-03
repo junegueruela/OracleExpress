@@ -1,0 +1,25 @@
+services:
+  oracle21E:
+    image: container-registry.oracle.com/database/express:21.3.0-xe
+    container_name: oracle21XE
+    hostname: oracle21xe
+    ports:
+      - "1524:1521"
+      - "5504:5500"
+    environment:
+      - ORACLE_PWD=OraclePass123
+      - ORACLE_CHARACTERSET=AL32UTF8
+    volumes:
+      # Monto los datos de oracle en bind-volume para poder hacer backup, si lo considero necesario
+      - ./oracle-data:/opt/oracle/oradata
+      # Creo también bind-volumes para dumps para poder hacer exports e imports
+      - ./dumps:/opt/oracle/dumps
+      # Scripts de setup y startup. Los creo como bind-volume para que me pueda ejecutar el import
+      - ./scripts:/opt/oracle/scripts
+    shm_size: 1g
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "healthcheck.sh"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
