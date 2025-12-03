@@ -60,7 +60,7 @@ Anota los nombres de los tablespaces (ej: `DATA`, `IDATA`, etc.)
 
 ### 2. Exportar esquemas en base de datos origen con expdp.
 
-# Copiar tu dump
+### Copiar tu dump
 ```bash
 cp /ruta/a/tu/<mi_dump> dumps/dump.dmp
 ```
