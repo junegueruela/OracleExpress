@@ -55,7 +55,11 @@ FROM dba_segments
 WHERE owner = '<USUARIO_A_EXPORTAR>' -- si son varios los usuarios, habrá que hacer con IN
 ORDER BY tablespace_name;
 ```
-
+Si no eres DBA y el volcado es de tu propio esqueme
+```sql
+SELECT DISTINCT tablespace_name
+FROM user_segments
+```
 Anota los nombres de los tablespaces (ej: `DATA`, `IDATA`, etc.)
 
 ### 2. Exportar esquemas en base de datos origen con expdp.
