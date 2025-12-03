@@ -37,7 +37,7 @@ impdp system/${ORACLE_PWD}@//localhost:1521/XEPDB1 \
   directory=DUMP_DIR \
   dumpfile=dump.dmp \
   logfile=importacion_$(date +%Y%m%d_%H%M%S).log \
-  remap_tablespace=URRACA_DAT:USERS \
+  remap_tablespace=DATA:USERS \
   # Añadir tantos rempaps como tablespaces distintas existan con objetos del dump
   # remap_tablespace=IDATA:USERS \  
   table_exists_action=REPLACE
