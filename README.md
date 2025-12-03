@@ -61,7 +61,7 @@ Anota los nombres de los tablespaces (ej: `DATA`, `IDATA`, etc.)
 ### 2. Exportar esquemas en base de datos origen con expdp.
 
 # Copiar tu dump
-cp /ruta/a/tu/<mi_dump> dumps/dump.dmp
+```cp /ruta/a/tu/<mi_dump> dumps/dump.dmp
 ```
 
 ### 3. Configurar tablespaces en el script
@@ -105,7 +105,7 @@ netstat -ano | findstr "1524 5504" # Para Windows
 
 **Importante para múltiples contenedores:**
 Si planeas crear varios contenedores Oracle en el mismo servidor, cada uno debe tener:
-- **Nommbre de contenedor difernete** en el docker-compose.yml.
+- **Nombre de contenedor difernete** en el docker-compose.yml.
 - **Puertos diferentes** en el docker-compose.yml
 - **Directorio diferente** para el proyecto (ya que `oracle-data/` almacena los datafiles de Oracle de cada instancia)
 
