@@ -1,0 +1,14 @@
+# Forzar LF para scripts shell
+*.sh text eol=lf
+*.bash text eol=lf
+
+# Archivos de texto normales
+*.md text
+*.yml text
+*.yaml text
+*.txt text
+
+# Archivos binarios
+*.dmp binary
+*.zip binary
+*.tar.gz binary
