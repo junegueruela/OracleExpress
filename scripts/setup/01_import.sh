@@ -42,6 +42,7 @@ impdp system/${ORACLE_PWD}@//localhost:1521/XEPDB1 \
   remap_tablespace=DATA:USERS \
   # Añadir tantos rempaps como tablespaces distintas existan con objetos del dump
   # remap_tablespace=IDATA:USERS \  
+  TRANSFORM=SEGMENT_ATTRIBUTES:N \
   table_exists_action=REPLACE
 
 if [ $? -eq 0 ]; then
